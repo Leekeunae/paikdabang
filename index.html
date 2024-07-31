@@ -5,324 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/reset.css">
-    <title>빽다방</title>
-    <style>       
-        
-        /* 모바일우선 */
-        @font-face {
-            font-family:'Montserrat';
-            src: url(./fonts/Montserrat.ttf);
-        }
-        @font-face {
-            font-family:'NanumMyeongjo';
-            src: url(./fonts/NanumMyeongjo.ttf);
-        }
-        @font-face {
-            font-family:'NotoSansKR';
-            src: url(./fonts/NotoSansKR.ttf);
-        }
-        /* ANIMATION */
-        @keyframes resize{
-            0%{transform:scale(1);}
-            100%{transform:scale(1.1);}
-        }
-
-
-        :root{
-            --primary-color:#ffe600;
-            --sub-color01:#f1ae1d;
-            --sub-color02:#6b4d30;
-            --sub-color03:#253f85;
-            --sub-color04:#071f60;
-            --gray-color00:#000000;
-            --gray-color01:#111111;
-            --gray-color02:#222222;
-            --gray-color03:#333333;
-            --gray-color04:#444444;
-            --gray-color05:#555555;
-            --gray-color06:#666666;
-            --gray-color07:#777777;
-            --gray-color08:#888888;
-            --gray-color09:#999999;
-            --gray-color10:#aaaaaa;
-            --gray-color11:#bbbbbb;
-            --gray-color12:#cccccc;
-            --gray-color13:#dddddd;
-            --gray-color14:#eeeeee;
-            --gray-color15:#ffffff;
-            font-family:'Montserrat','NotoSansKR',sans-serif;
-            font-weight:500;
-            font-size:18px;
-            line-height:1;
-            color:var(--gray-color01);
-        }
-        .wrap{
-            overflow:hidden;
-            display:grid;
-            grid-template-columns:repeat(12,1fr);
-        }
-        .header,.sec,.footer{
-            grid-column:1/-1;
-        }
-        .container{
-            padding:0 10px;
-        }
-        .link{
-            width:50px;
-            height:50px;
-            border-radius:50%;
-            background:var(--gray-color15);
+    <!-- 공통스타일 -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- index 스타일 -->
+    <link rel="stylesheet" href="./css/index.css">
+    <title>빽다방</title>  
+    <style>
+        .main-banner .container{
             position:relative;
         }
-        .link::before,.link::after{
-            content:'';
-            display:block;
-            width:24px;
-            height:2px;
-            border-radius:1px;
-            background:var(--gray-color00);
+        .btn-pager{
             position:absolute;
             left:50%;
-            top:50%;
-            transform:translate(-50%,-50%);
-        }
-        .link::after{
-            transform:translate(-50%,-50%) rotate(90deg);
-        }
-
-
-        /* .header */
-        .header{
-           padding:20px 0; 
-           background:var(--gray-color15);
-           position:relative;
-           z-index:100;
-        }        
-        .header .container{
-            max-width:1170px;
-            margin:0 auto;
+            bottom:30px;
+            transform:translate(-50%,0);
+            z-index:10000;
             display:grid;
-            grid-template-columns:auto auto;
-            justify-content:space-between;
-            align-items:center;
+            grid-template-columns:12px 12px 12px 12px;
+            grid-template-rows:12px;
+            gap:12px;
         }
-        .logo a{
-            display:block;
-            width:97px;
-            height:30px;
-            background:url(./images/logo.png) no-repeat center;
-            background-size:cover;
-            text-indent:-999999px;
-        }
-        .btn-nav{
-            width:30px;
-            height:24px;
-            display:grid;
-            gap:6px;
-            cursor:pointer;
-        }
-        .btn-nav span{
-            width:100%;
-            height:4px;
-            border-radius:2px;
-            background:var(--gray-color01);
-            text-indent:-99999px;
-        }
-        .nav{
-            display:none;
-            position:absolute;
-            left:0;
-            right:0;
-            top:100%;
-        }
-        .main-nav{
-            padding-bottom:500px;
-            background:var(--gray-color14);
-            display:grid;
-            grid-template-columns:repeat(7,auto);
-            column-gap:80px;
-        }
-        .main-nav>li{
-            grid-column:1/-1;
-            border-bottom:1px solid var(--gray-color11);
-            cursor:pointer;
-            position:relative;
-        }
-        .main-nav>li>span{
-            display:block;
-            padding:20px 18px;
-        }        
-        .q-nav{
-            display:none;
-            grid-template-columns:auto 20px 20px;
-            grid-template-rows:20px;
-            gap:10px;
-            justify-content:end;
-            align-items:center;
-        }
-        .q-nav li:nth-child(1){
-            margin-right:24px;
-            font-size:0.7em;
-            color:var(--gray-color10);
-            position:relative;
-        } 
-        .q-nav li:nth-child(1)::after{
-            content:'';
-            display:block;
-            width:1px;
-            height:10px;
+        .btn-pager span{
+            border-radius:50%;
             background:var(--gray-color10);
-            position:absolute;
-            right:-14px;
-            top:1px;
-        }       
-        .q-nav li:nth-child(2) a{
-            display:block;
-            width:20px;
-            height:20px;
-            background:url(./images/ico-face.png) no-repeat center;
-            background-size:contain;
             text-indent:-99999px;
+            cursor:pointer;
         }
-        .q-nav li:nth-child(3) a{
-            display:block;
-            width:20px;
-            height:20px;
-            background:url(./images/ico-insta.png) no-repeat center;
-            background-size:contain;
-            text-indent:-99999px;
+        .btn-pager span.active{
+            background:var(--primary-color);
         }
-
-
-
-        /* .main-banner */
-        .main-banner{
-            z-index:90;
-        }
-        .main-banner .container{
-            padding:0;
-        }
-        .main-banner h2{
-            display:none;
-        }
-        .slider{
-            display:grid;
-        }
-        .slider div{
-            grid-area:1/1/2/-1;
-            z-index:1;
-            opacity:0;
-            transition:opacity 0.3s;
-        }
-        .slider div.active{
-            z-index:100;
-            opacity:1;
-        }
-        /* .coffee-story /.brand-story => story*/
-        .story{
-            height:240px;
-            padding:38px 0 15px;
-            background:url(./images/img-sec01.jpg) no-repeat;
-            background-position-x:55%;
-            background-size:cover;
-            color:var(--sub-color04);
-        }
-        .story h2{
-            margin-bottom:1em;
-            font-weight:900;
-            font-size:42px;
-        }
-        .story p{
-            display:none;
-        }
-        /* .brand-story */
-        .brand-story{
-            background:var(--sub-color03) url(./images/img-sec02.jpg) no-repeat 90% 80%;
-            background-size:50%;
-            color:var(--gray-color15);
-        }
-        
-        /* .fresh-coffee */
-        /* .various-coffee */
-        /* .sweet-ccino */
-        /* .dessert */
-        /* .fran-store */
-        /* .sns */
-        /* .footer */
-
-
-
-
-
-        @media (min-width:760px){
-        }
-
-
-
-        @media (min-width:1020px){
-            .coffee-story{
-                grid-area:3/1/4/7;
-            }
-            .brand-story{
-                grid-area:3/7/4/-1;
-            }
-            .various-coffee{
-                grid-area:5/1/6/8;
-            }
-            .sweet-ccino{
-                grid-area:5/8/6/-1;
-            }
-            .dessert{
-                grid-area:6/6/7/-1;
-            }
-            .fran-store{
-                grid-area:6/1/7/6;
-            }
-        }
-
-
-
-
-        @media (min-width:1200px){            
-            .logo{
-                grid-area:2/1/3/2;
-            }
-            .logo a{
-                width:194px;
-                height:62px;
-            }
-            .btn-nav{
-                display:none;
-            }
-            .nav{
-                display:block !important;
-                grid-area:2/2/3/-1;
-                position:static;
-            }
-            .main-nav{
-                padding-bottom:0;
-                background:transparent;
-            }
-            .main-nav>li{
-                grid-column:auto/auto;
-                border-bottom:none;
-                font-size:0.85em;
-            }
-            .main-nav>li>span{
-                padding:50px 0 0 0;
-            }            
-            .q-nav{
-                display:grid;
-                grid-area:1/2/2/-1;
-            }
-            .story{
-                height:320px;
-            }
-            .story p{
-                display:block;
-            }
-        }
-    </style>
+    </style>  
 </head>
 <body>
     <section class="wrap">
@@ -430,6 +142,9 @@
                         </a>
                     </div>
                 </div>
+                <div class="btn-pager">
+                    <span class="active">1</span><span>2</span><span>3</span><span>4</span>
+                </div>
             </div>
         </section>
         <section class="sec sec02 coffee-story story">
@@ -446,28 +161,28 @@
                 <div class="link"><a href="#">빽다방 소개 보러가기</a></div>
             </div>
         </section>
-        <section class="sec sec04 fresh-coffee">
+        <section class="sec sec04 fresh-coffee story01">
             <div class="container">
                 <h2>FRESH<br>COFFEE</h2>
                 <p>신선한 뉴크롭 원두를 사용하여<br>추출한 커피메뉴!</p>
                 <div class="link"><a href="#">프레쉬 커피 보러가기</a></div>
             </div>
         </section>
-        <section class="sec sec05 various-coffee">
+        <section class="sec sec05 various-coffee story01">
             <div class="container">
                 <h2>VARIOUS<br>BEVERAGE</h2>
                 <p>에이드, 티, 주스 등 취향대로<br>골라 먹는 즐거움!</p>
                 <div class="link"><a href="#">음료들 보러가기</a></div>
             </div>
         </section>
-        <section class="sec sec06 sweet-ccino">
+        <section class="sec sec06 sweet-ccino story01">
             <div class="container">
                 <h2>SWEET<br>PAIK'S CCINO</h2>
                 <p>달콤 시원한 빽다방<br>시그니처 메뉴!</p>
                 <div class="link"><a href="#">시그니처 보러가기</a></div>
             </div>
         </section>
-        <section class="sec sec07 dessert">
+        <section class="sec sec07 dessert story01">
             <div class="container">
                 <h2>TASTY<br>ICE CREAM /<br>DESSERT</h2>
                 <p>달콤한 아이스크림부터<br>든든한 브레드까지!</p>
@@ -478,13 +193,17 @@
             <div class="container">
                 <h2>플랜차이즈와 스토어</h2>
                 <article class="art fran">
-                    <h3>FRANCHISE</h3>
-                    <p>빽다방 창업안내를 도와드리겠습니다.</p>
+                    <div class="art-txt">
+                        <h3>FRANCHISE</h3>
+                        <p>빽다방 창업안내를 도와드리겠습니다.</p>
+                    </div>
                     <div class="link"><a href="#">플랜차이즈 바로가기</a></div>
                 </article>
                 <article class="art store">
-                    <h3>STORE</h3>
-                    <p>원하는 지역의 매장을 검색해보세요!</p>
+                    <div class="art-txt">
+                        <h3>STORE</h3>
+                        <p>원하는 지역의 매장을 검색해보세요!</p>
+                    </div>                    
                     <form action="#" class="search-form">
                         <input type="text" name="search-store" id="search-store">
                         <input type="submit" value="매장찾기">
@@ -494,8 +213,10 @@
         </section>
         <section class="sec sec09 sns">
             <div class="container">
-                <h2>PAIK’S COFFEE SNS</h2>
-                <p>#빽다방 #빽다방신메뉴 #빽다방이벤트</p>
+                <div class="sns-txt">
+                    <h2>PAIK’S COFFEE SNS</h2>
+                    <p>#빽다방 #빽다방신메뉴 #빽다방이벤트</p>
+                </div>
                 <div class="link-sns">
                     <a href="#">facebook 바로가기</a><a href="#">instagram 바로가기</a>
                 </div>
@@ -518,8 +239,8 @@
                     <a href="#"><img src="./images/logo-theborn.png" alt="더본코리아 바로가기"></a>
                 </article>
                 <article class="link-family">
-                    <h2 class="btn-family">패밀리사이트 바로가기</h2>
-                    <ul>
+                    <h2 id="btn-family" class="btn-family">패밀리사이트 바로가기</h2>
+                    <ul id="family-list">
                         <li><a href="#">더본코리아</a></li>
                         <li><a href="#">창업센터</a></li>
                         <li><a href="#">새마을식당</a></li>
@@ -553,11 +274,9 @@
         </footer>
     </section>
     <script src="./js/jquery.min.js"></script>
+    <script src="./js/default.js"></script>
     <script>
-        $('.btn-nav').click(function(){
-            $('.nav').slideToggle();
-        })
-       
+              
     </script>
 </body>
 </html>
